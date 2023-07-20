@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "student-management-syste-fb40c"
+  },
+  "targets": {
+    "student-management-syste-fb40c": {
+      "hosting": {
+        "firebase-angular-crud": [
+          "student-management-syste-fb40c"
+        ]
+      }
+    }
+  }
+}
