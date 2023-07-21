@@ -84,8 +84,7 @@ export class AuthService {
 
 
   //sign in with google
-   
-
+  
   googleSignIn() {
     return this.fireauth.signInWithPopup(new GoogleAuthProvider).then(res => {
       
@@ -96,4 +95,6 @@ export class AuthService {
       alert(err.message);
     })
   }
+
+  
 }

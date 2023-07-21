@@ -1,24 +1,91 @@
-<div class="container-fluid">
-<div class="row mt-5">
+<!-- <div class="container-fluid">
+  <div class="row mt-5">
     <div class="col"></div>
     <div class="col-4">
-        <div class="card shadow">
-            <div class="card-body">
-
-                <form><div class="mb-3">
-                        <h4 class="text-danger text-muted">Welcome</h4>
-                    </div>
- 
-  
- 
-  <button type="button" class="btn btn-warning text-center" (click)="register()">Logout</button>
- 
-</form>
-
+      <div class="card shadow">
+        <div class="card-body">
+          <form>
+            <div class="mb-3">
+              <h4 class="text-danger text-muted">Welcome</h4>
             </div>
+
+            <button
+              type="button"
+              class="btn btn-warning text-center"
+              (click)="register()"
+            >
+              Logout
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div> -->
+
+<div class="cotainer-fluid">
+  <div class="row">
+    <div class="col-md-4 mt-5">
+        <div class="card border-0 shadow p-3">
+
+<div class="form-floating mb-3 text-center">
+    <h5 class="text-center text-warning">Add Student </h5>
+</div>
+
+           
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="firstname"
+          name="firstname"
+          [(ngModel)]="first_name"
+        />
+        <label for="firstname">First name</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="lastname"
+          name="lastname"
+          [(ngModel)]="last_name"
+        />
+        <label for="lastname">Last Name </label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          [(ngModel)]="email"
+        />
+        <label for="email">Email</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="mobile"
+          name="mobile"
+          [(ngModel)]="mobile"
+        />
+        <label for="mobile">Mobile</label>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-outline-success"
+        (click)="addStudent()"
+      >
+        Add Student
+      </button>
+    
         </div>
     </div>
     <div class="col"></div>
-</div>
-
+  </div>
 </div>
