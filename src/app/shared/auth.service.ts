@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/compat/auth'
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import {GoogleAuthProvider} from '@angular/fire/auth'
+
 import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root',
@@ -10,16 +13,14 @@ export class AuthService {
   //login method
   login(email: string, password: string) {
     this.fireauth.signInWithEmailAndPassword(email, password).then(
-      res => {
+      (res) => {
         localStorage.setItem('token', 'true');
 
         if (res.user?.emailVerified == true) {
-        this.router.navigate(['dashboard']);
+          this.router.navigate(['/dashboard']);
         } else {
           this.router.navigate(['/varify-email']);
-}
-
-
+        }
       },
       (err) => {
         alert(err.message);
@@ -30,10 +31,10 @@ export class AuthService {
   //register method
   register(email: string, password: string) {
     this.fireauth.createUserWithEmailAndPassword(email, password).then(
-      res => {
+      (res) => {
         alert('Registation Successful');
-        this.router.navigate(['/login']);
         this.sendEmailForVarification(res.user);
+        this.router.navigate(['/login']);
       },
       (err) => {
         alert(err.message);
@@ -69,12 +70,30 @@ export class AuthService {
 
   //email varification
   sendEmailForVarification(user: any) {
-    user.sendEmailForVarification().then((res: any) => {
-      this.router.navigate(['/varify-email']);
-    }, (err: any) => {
-      alert('Something went wrong. Not able to send mail to your email.')
-    })
+    // console.log()
+    user.sendEmailVerification().then(
+      (res: any) => {
+        this.router.navigate(['/varify-email']);
+      },
+      (err: any) => {
+        alert('Something went wrong. Not able to send mail to your email.');
+      }
+    );
   }
 
 
+
+  //sign in with google
+   
+
+  googleSignIn() {
+    return this.fireauth.signInWithPopup(new GoogleAuthProvider).then(res => {
+      
+      this.router.navigate(['/dashboard']);
+      localStorage.setItem('token', JSON.stringify(res.user?.uid));
+
+    }, err => {
+      alert(err.message);
+    })
+  }
 }

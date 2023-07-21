@@ -10,10 +10,8 @@ export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor(private auth: AuthService) { }
-  ngOnInit(): void {
-      
-  }
+  constructor(private auth: AuthService) {}
+  ngOnInit(): void {}
   login() {
     if (this.email == '') {
       alert('Please enter email');
@@ -29,4 +27,7 @@ export class LoginComponent implements OnInit {
     this.password = '';
   }
 
+  signInWithGoogle() {
+    this.auth.googleSignIn()
+  }
 }
